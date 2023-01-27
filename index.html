@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: beige;
+        }
+        .container {
+            display: grid;
+            grid-template-areas: 'heading heading heading'
+                                 'story story story'
+                                 'story story story'
+                                 'firstRow firstRow firstRow'
+                                 'secondRow secondRow secondRow'
+                                 'thirdRow thirdRow thirdRow'
+                                 'fourthRow fourthRow fourthRow';
+            width: auto;
+            height: auto;
+            padding: 10px;
+            margin: 50px;
+            text-align: center;
+            vertical-align: middle;
+            font-family: helvetica;
+            font-size: 200%;
+            border: #bbbbaa solid 4px;
+            border-radius: 10px;
+        }
+        .heading {
+            grid-area: heading;
+        }
+        .story {
+            grid-area: story;
+        }
+        .firstRow {
+            grid-area: firstRow;
+        }
+        .secondRow {
+            grid-area: secondRow;
+        }
+        .thirdRow {
+            grid-area: thirdRow;
+        }
+        .fourthRow {
+            grid-area: fourthRow;
+        }
+        button { 
+            height: 75;
+        width: 150px;
+    }
+    </style>
+</head>
+<body>
+    <div id="app" class="container"></div>
+
+    <script>
+    
+    //Model
+    let text1 = '________';
+    let text2 = '________';
+    let text3 = '________';
+    let text4 = '________';
+    var texts = ['Boy', 'Girl', 'Princess', 'Peter Pan', 'Frying Pan', 'Barbie', 'play', 'fight', 'wander', 'Hook', 'Planet', 'Crook'];
+    
+    
+    
+    
+    //View
+    updateView();
+    function updateView() {
+        let checkStory;
+     
+        document.getElementById('app').innerHTML = /*html*/ `
+        <h2 class="heading">Fill in the blanks to create a meaningful story</h2>
+
+        <h3 class="story">I am a Lost <u>${text1}</u> from Neverland <br/>
+        Usually hanging out with <u>${text2}</u>  <br/>
+        And when we're bored we <u>${text3}</u>  in the woods <br/>
+        Always on the run from Captain <u>${text4}</u> </h3>
+    
+        <Div class="firstRow">
+        <button onclick="Choice1(0)">Boy</button>
+        <button onclick="Choice1(1)">Girl</button>
+        <button onclick="Choice1(2)">Princess</button>
+        </div><br/>
+
+        <Div class="secondRow">
+        <button onclick="Choice2(3)">Peter Pan</button>
+        <button onclick="Choice2(4)">Frying Pan</button>
+        <button onclick="Choice2(5)">Barbie</button>
+        </div><br/>
+
+        <Div class="thirdRow">
+        <button onclick="Choice3(6)">play</button>
+        <button onclick="Choice3(7)">fight</button>
+        <button onclick="Choice3(8)">wander</button>
+        </div><br/>
+
+        <Div class="fourthRow">
+        <button onclick="Choice4(9)">Hook</button>
+        <button onclick="Choice4(10)">Planet</button>
+        <button onclick="Choice4(11)">Crook</button>
+        </div><br/>
+        
+        <div>${checkStory = 
+            (text1 == '________') && (text2 == '________') && (text3 == '________') && (text4 == '________') ? 
+            'You have not chosen any words.' :
+            (text1 == '________') || (text2 == '________') || (text3 == '________') || (text4 == '________') ? 
+            'You have not filled all the blanks.' :
+            (text1 == 'Boy') && (text2 == 'Peter Pan') && (text3 == 'play') && (text4 == 'Hook') ? 
+            '<b>You have created the correct story.</b>' : 
+            'You have created a wrong story. Keep trying!!'}
+        </div>
+        
+        <button onclick="reset()" class="reset">Reset story</button>
+        `;
+    
+
+    }
+    
+    //Controller
+    
+    function Choice1(a) {
+        text1 = texts[a];
+        updateView();
+    }
+    function Choice2(a) {
+        text2 = texts[a];
+        updateView();
+    }
+    function Choice3(a) {
+        text3 = texts[a];
+        updateView();
+    }
+    function Choice4(a) {
+        text4 = texts[a];
+        updateView();
+    }
+   
+    function reset() {
+        text1 = '________';
+        text2 = '________';
+        text3 = '________';
+        text4 = '________';
+        
+        updateView();
+
+    }
+
+</script>
+</body>
+</html>
+
